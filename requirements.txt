@@ -2,5 +2,7 @@ dnspython==2.8.0
 markdown-it-py==4.0.0
 mdurl==0.1.2
 Pygments==2.20.0
+python-dateutil==2.9.0.post0
+python-whois==0.9.6
 rich==15.0.0
-whois==1.20240129.2
+six==1.17.0

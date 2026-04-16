@@ -2,9 +2,16 @@ import whois
 from .utils import console, print_error
 
 def run(domain: str):
-    """Fetch and display WHOIS information."""
     try:
-        w = whois.whois(domain)
+        # Try python-whois style (whois.whois)
+        if hasattr(whois, 'whois'):
+            w = whois.whois(domain)
+        # Fallback to whois.query style
+        elif hasattr(whois, 'query'):
+            w = whois.query(domain)
+        else:
+            raise ImportError("Unsupported whois library. Install 'python-whois'.")
+        
         console.print(f"[bold]WHOIS for [cyan]{domain}[/][/]\n")
         for key, value in w.items():
             if value:
